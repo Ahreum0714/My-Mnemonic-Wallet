@@ -25,14 +25,14 @@ app.get("/", function (req, res, next) {
 });
 app.use("/wallet", walletRouter);
 
-// catch 404 and forward to error handler
+// 404 Not Found 에러 핸들링
 app.use((req, res, next) => {
   const err = new Error("Not Found");
   err["status"] = 404;
   next(err);
 });
 
-// error handler
+// 그 외의 에러 핸들링: 에러 코드를 메세지로 출력
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({
